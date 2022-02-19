@@ -1,5 +1,9 @@
+import { MainLayout } from '../common/common'
+
 const CartPage = () => (
-    <h1>Корзина</h1>
+    <MainLayout>
+
+    </MainLayout>
 );
 
 export default CartPage;
