@@ -1,8 +1,12 @@
 import CartPage from '../cart-page/cart-page';
+import { Header } from '../common/common';
 
 function App() {
     return (
-        <CartPage />
+        <>
+            <Header />
+            <CartPage />
+        </>
     );
 }
 
