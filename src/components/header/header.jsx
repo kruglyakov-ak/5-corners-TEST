@@ -4,8 +4,9 @@ const Header = () => (
         <div className="main-header__menu">
             <form className="menu__search-form">
                 <input
-                    className="search-form__input"
-                    type="text" id="search"
+                    className="search-form__input input"
+                    type="search"
+                    id="search"
                     name="search"
                     placeholder="Поиск"
                 />

@@ -9,7 +9,8 @@
     --font-formsHeadingAdaptive: 26px;
     --font-formsHeading: 28px;
     --font-semilarge: 30px;
-    --font-large: 40px --color-white: #FFFFFF;
+    --font-large: 40px;
+    --color-white: #FFFFFF;
     --color-black: #000000;
     --color-grey1: #9F9F9F;
     --color-grey2: #DEDEDE;
@@ -95,31 +96,37 @@ ul {
 
     position: absolute;
 
-    top: 0;
+    top: 19px;
     left: 0;
     width: 27px;
     height: 27px;
 }
 
-.search-form__input {
-    margin-left: 45px;
-    width: 250px;
-    height: 33px;
-
-    font-family: inherit;
-
-    background-color: transparent;
+.input {
     border: none;
     border-bottom: 1px solid var(--color-grey1);
+
+    background-color: transparent;
+
+    font-family: inherit;
+    line-height: 24.84px;
+
+    height: 46px;
+    padding: 20px 0 6px;
 }
 
-.search-form__input::placeholder {
+.input::placeholder {
     opacity: 1;
     color: var(--color-grey1);
 }
 
-.search-form__input:focus {
+.input:focus {
     outline: none;
+}
+
+.search-form__input {
+    margin-left: 45px;
+    width: 250px;
 }
 
 .main-header__navigation {
@@ -138,7 +145,7 @@ ul {
     text-transform: uppercase;
 }
 
-.main-header__logo{
+.main-header__logo {
     margin-top: 30px;
     padding: 0 20px;
 }
@@ -160,4 +167,61 @@ ul {
 
 .breadcrumbs-link:last-child {
     color: var(--color-black);
+}
+
+.title {
+    font-size: var(--font-large);
+    color: var(--color-black);
+    line-height: 45px;
+}
+
+.order__title {
+    margin-bottom: 15px;
+}
+
+.autorization-answ {
+    margin-bottom: 30px;
+}
+
+.autorization-answ__link {
+    text-decoration: underline;
+}
+
+.order-form__wrap {
+    display: grid;
+    grid-template-columns: 505px;
+    grid-template-rows: 46px 46px 46px 46px 46px;
+    gap: 20px 0px;
+    grid-template-areas:
+        "."
+        "second-row"
+        "."
+        "."
+        ".";
+}
+
+.second-row {
+    display: grid;
+    grid-template-columns: 235px 235px;
+    grid-template-rows: 46px;
+    gap: 0px 35px;
+    grid-template-areas:
+        ". .";
+    grid-area: second-row;
+}
+
+.addres-lable__wrap {
+    position: relative;
+}
+
+.address-lable {
+    position: absolute;
+    margin: 0;
+    font-size: var(--font-mini);
+    line-height: 17px;
+    color: var(--color-grey1);
+}
+
+.address-input {
+    width: 100%;
 }
