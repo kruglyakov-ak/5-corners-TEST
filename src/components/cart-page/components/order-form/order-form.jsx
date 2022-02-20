@@ -1,6 +1,6 @@
 const OrderForm = () => (
     <form className='order-form'>
-        <div className="order-form__wrap">
+        <div className="map__wrap">
             <div className='addres-lable__wrap'>
                 <label className='address-lable' htmlFor="address">Адрес</label>
                 <input
@@ -9,12 +9,18 @@ const OrderForm = () => (
                     id='address'
                     name='address'
                     placeholder='Ваш Адрес'
-                    value='г. Санкт-Петербург, пр. Просвещения, д. 99, кв. 152'
+                    defaultValue='г. Санкт-Петербург, пр. Просвещения, д. 99, кв. 152'
                     required
-                    readOnly
                 />
             </div>
-            <div className="second-row">
+            <div className="map">
+                <div className="total-price">
+                    <span>Итог:</span><span>3790 руб.</span>
+                </div>
+            </div>
+        </div>
+        <div className="order-form__wrap">
+            <div className="first-row">
                 <input
                     type="text"
                     className="input"

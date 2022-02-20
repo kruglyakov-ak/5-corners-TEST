@@ -194,30 +194,31 @@ ul {
 }
 
 .order-form__wrap {
+    margin-top: 20px;
     display: grid;
     grid-template-columns: 505px;
-    grid-template-rows: 46px 46px 46px 46px 46px;
+    grid-template-rows: 46px 46px 46px 46px;
     gap: 20px 0px;
     grid-template-areas:
-        "."
-        "second-row"
+        "first-row"
         "."
         "."
         ".";
 }
 
-.second-row {
+.first-row {
     display: grid;
     grid-template-columns: 235px 235px;
     grid-template-rows: 46px;
     gap: 0px 35px;
     grid-template-areas:
         ". .";
-    grid-area: second-row;
+    grid-area: first-row;
 }
 
 .addres-lable__wrap {
     position: relative;
+    width: 505px;
 }
 
 .address-lable {
@@ -230,6 +231,42 @@ ul {
 
 .address-input {
     width: 100%;
+}
+
+.map__wrap {
+    position: relative;
+}
+
+.map {
+    position: absolute;
+    display: flex;
+    flex-direction: column-reverse;
+    top: -110px;
+    right: 0;
+
+    width: 555px;
+    height: 700px;
+
+    background-color: var(--color-grey1);
+}
+
+.total-price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+
+    color: var(--color-white);
+    font-family: 'Helvetica_Bold', Arial, sans-serif;
+    font-weight: 700;
+    font-size: var(--font-large);
+    line-height: 55.2px;
+
+    width: 100%;
+    height: 136px;
+
+    background-color: var(--color-black);
+    opacity: 0.5;
 }
 
 .subtitle {
