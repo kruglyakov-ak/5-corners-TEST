@@ -1,8 +1,26 @@
 import logo from '../../../assets/img/logo.png';
+import menuIcons from '../../../assets/img/menu-ico.png';
 import * as S from './header.styled';
 
 const Header = () => (
     <S.StyledHeader>
+
+        <S.SearchMenuWrap>
+            <S.SearchForm>
+                <S.SearchIconSpan />
+                <S.SearchInput
+                    type="text"
+                    id="search"
+                    name="search"
+                    placeholder="Поиск" />
+            </S.SearchForm>
+
+            <S.SearchMenuIcons
+                src={menuIcons}
+                alt="Иконки"
+                width="126"
+                height="30" />
+        </S.SearchMenuWrap>
 
         <S.Navigation>
             <S.Links>
@@ -20,7 +38,11 @@ const Header = () => (
             </S.Links>
 
             <S.Logo href='#'>
-                <S.Image src={logo} alt="Логотип" width="160" height="50" />
+                <S.Image
+                    src={logo}
+                    alt="Логотип"
+                    width="160"
+                    height="50" />
             </S.Logo>
 
             <S.Links>
