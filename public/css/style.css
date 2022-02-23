@@ -19,16 +19,22 @@
 
 @font-face {
     font-family: 'Helvetica';
-    font-style: normal;
+    src: local('Helvetica Regular'), local('Helvetica-Regular'),
+        url('./fonts/Helvetica.woff2') format('woff2'),
+        url('./fonts/Helvetica.woff') format('woff'),
+        url('./fonts/Helvetica.ttf') format('truetype');
     font-weight: 400;
-    src: url('/fonts/helvetica_regular.otf') format('otf');
+    font-style: normal;
 }
 
 @font-face {
-    font-family: 'Helvetica_Bold';
-    font-style: normal;
+    font-family: 'Helvetica';
+    src: local('Helvetica Bold'), local('Helvetica-Bold'),
+        url('./fonts/Helvetica-Bold.woff2') format('woff2'),
+        url('./fonts/Helvetica-Bold.woff') format('woff'),
+        url('./fonts/Helvetica-Bold.ttf') format('truetype');
     font-weight: 700;
-    src: url('/fonts/helvetica_bold.otf') format('otf');
+    font-style: normal;
 }
 
 *,
@@ -170,7 +176,6 @@ ul {
 }
 
 .title {
-    font-family: 'Helvetica_Bold', Arial, sans-serif;
     font-weight: 700;
     font-size: var(--font-large);
     color: var(--color-black);
@@ -259,7 +264,6 @@ ul {
     padding: 0 30px;
 
     color: var(--color-white);
-    font-family: 'Helvetica_Bold', Arial, sans-serif;
     font-weight: 700;
     font-size: var(--font-large);
     line-height: 55.2px;
@@ -273,7 +277,6 @@ ul {
 }
 
 .subtitle {
-    font-family: 'Helvetica_Bold', Arial, sans-serif;
     font-weight: 700;
     font-size: var(--font-formsHeading);
     line-height: 38.64px;
@@ -303,7 +306,6 @@ ul {
 
     background-color: transparent;
 
-    font-family: 'Helvetica_Bold', Arial, sans-serif;
     font-weight: 700;
     font-size: var(--font-medium);
     line-height: 27.6px;
@@ -332,7 +334,6 @@ ul {
 }
 
 .product-card-title__wrap {
-    font-family: 'Helvetica_Bold', Arial, sans-serif;
     font-weight: 700;
     font-size: var(--font-medium);
     line-height: 27.6px;
@@ -407,7 +408,6 @@ ul {
     background: none;
     text-align: center;
 
-    font-family: 'Helvetica_Bold', Arial, sans-serif;
     font-weight: 700;
     font-size: var(--font-medium);
     line-height: 27.6px;
