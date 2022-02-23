@@ -216,7 +216,7 @@ ul {
     grid-area: first-row;
 }
 
-.addres-lable__wrap {
+.address-lable__wrap {
     position: relative;
     width: 505px;
 }
@@ -233,14 +233,12 @@ ul {
     width: 100%;
 }
 
-.map__wrap {
+.order-form__map-wrap {
     position: relative;
 }
 
 .map {
     position: absolute;
-    display: flex;
-    flex-direction: column-reverse;
     top: -110px;
     right: 0;
 
@@ -251,6 +249,10 @@ ul {
 }
 
 .total-price {
+    position: absolute;
+    right: 0;
+    top: 454px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -262,11 +264,12 @@ ul {
     font-size: var(--font-large);
     line-height: 55.2px;
 
-    width: 100%;
+    width: 555px;
     height: 136px;
 
     background-color: var(--color-black);
-    opacity: 0.5;
+    opacity: 0.8;
+    z-index: 9999;
 }
 
 .subtitle {
