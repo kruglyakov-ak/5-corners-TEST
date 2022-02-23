@@ -3,9 +3,8 @@ import { MapBoxProvider } from 'leaflet-geosearch';
 import { POSITION, TileLayerOptions } from '../../../../../../const';
 import MapComponent from '../map/map';
 
-const AddressInput = () => {
+const AddressInput = ({ inputAddressValue, setInputAddressValue }) => {
     const [position, setPosition] = useState(POSITION);
-    const [addressInputValue, setAddressInputValue] = useState('');
     const [address, setAddress] = useState('');
 
 
@@ -19,13 +18,14 @@ const AddressInput = () => {
         provider.search({ query: address }).then(function (result) {
             const { x: lng, y: lat } = result[0];
             setPosition([lat, lng]);
+            setInputAddressValue(result[0].label);
         }).catch(() => {
             return;
         });
-    }, [address]);
+    }, [address, setInputAddressValue]);
 
     const handleAddressInputChange = ({ target }) => {
-        setAddressInputValue(target.value);
+        setInputAddressValue(target.value);
     };
 
     const handleAddressInputBlur = ({ target }) => {
@@ -34,8 +34,9 @@ const AddressInput = () => {
 
     return (
         <div className="order-form__map-wrap">
-            <div className='address-lable__wrap'>
-                <label className='address-lable' htmlFor="address">Адрес</label>
+            <div className='input__wrap'>
+                <label className={(inputAddressValue === '') ? 'label' : 'label label--show'}
+                    htmlFor="address">Адрес</label>
                 <input
                     type="text"
                     className="input address-input"
@@ -44,7 +45,7 @@ const AddressInput = () => {
                     placeholder='Ваш Адрес'
                     onChange={handleAddressInputChange}
                     onBlur={handleAddressInputBlur}
-                    value={addressInputValue}
+                    value={inputAddressValue}
                     required
                 />
             </div>
