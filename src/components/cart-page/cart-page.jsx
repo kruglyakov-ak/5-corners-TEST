@@ -1,6 +1,4 @@
 import OrderForm from './components/order-form/order-form';
-import ProductCardsList from './components/product-cards-list/product-cards-list';
-
 
 const CartPage = () => (
     <main className='main-content'>
@@ -18,8 +16,6 @@ const CartPage = () => (
 
             <OrderForm />
         </section>
-
-        <ProductCardsList />
     </main>
 );
 

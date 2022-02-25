@@ -1,8 +1,6 @@
 const ProductCardsList = () => (
-    <section className="product-cards-list">
-        <h2 className="subtitle">Выбранные товары:</h2>
-
-        <div className="product-cards-wrap">
+    <>
+        <h2 className="subtitle">Выбранные товары:</h2><div className="product-cards-wrap">
             <article className="product-card">
                 <img className="product-card__img" src="/img/product.png" alt="Товар" width="150" height="150" />
                 <div className="product-card__content">
@@ -24,11 +22,8 @@ const ProductCardsList = () => (
                 </div>
             </article>
         </div>
-        <button className="button">Купить</button>
-
-
-    </section>
-
+        <button type="submit" className="button">Купить</button>
+    </>
 );
 
 export default ProductCardsList;

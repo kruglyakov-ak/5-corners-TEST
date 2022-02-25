@@ -1,5 +1,6 @@
 import { useState } from "react";
 import AddressInput from "./components/address-input/address-input";
+import ProductCardsList from "./components/product-cards-list/product-cards-list";
 
 const OrderForm = () => {
     const [inputAddressValue, setInputAddressValue] = useState('');
@@ -35,8 +36,38 @@ const OrderForm = () => {
         setInputCommentValue(target.value);
     }
 
+    const resetForm = () => {
+        setInputAddressValue('');
+        setInputNameValue('');
+        setInputTelValue('');
+        setInputEmailValue('');
+        setInputTypeValue('');
+        setInputCommentValue('');
+    };
+
+    const handleSubmitButtonClick = (evt) => {
+        evt.preventDefault();
+
+        if (inputAddressValue !== '' &&
+            inputNameValue !== '' &&
+            inputTelValue !== '' &&
+            inputEmailValue !== '' &&
+            inputTypeValue !== '') {
+            console.log({
+                address: inputAddressValue,
+                name: inputNameValue,
+                tel: inputTelValue,
+                email: inputEmailValue,
+                type: inputTypeValue,
+                comment: inputCommentValue,
+            });
+            resetForm();
+        }
+
+    };
+
     return (
-        <form className='order-form'>
+        <form className='order-form' onSubmit={handleSubmitButtonClick}>
             <AddressInput inputAddressValue={inputAddressValue} setInputAddressValue={setInputAddressValue} />
             <div className="order-form__wrap">
                 <div className="first-row">
@@ -99,6 +130,7 @@ const OrderForm = () => {
                         />
                     </div>
                     <button
+                        type="button"
                         className={inputTypeIsShow ? "input-type__show-button input-type__show-button--up" : "input-type__show-button input-type__show-button--down"}
                         onClick={handleInputTypeShowButtonClick}
                     ></button>
@@ -123,6 +155,9 @@ const OrderForm = () => {
                     />
                 </div>
             </div>
+
+            <ProductCardsList />
+
         </form>
     )
 };

@@ -7,7 +7,6 @@ const AddressInput = ({ inputAddressValue, setInputAddressValue }) => {
     const [position, setPosition] = useState(POSITION);
     const [address, setAddress] = useState('');
 
-
     useEffect(() => {
         const provider = new MapBoxProvider({
             params: {
