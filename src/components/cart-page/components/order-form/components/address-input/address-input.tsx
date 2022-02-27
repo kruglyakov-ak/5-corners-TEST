@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, ChangeEvent } from 'react';
 import { MapBoxProvider } from 'leaflet-geosearch';
 import { POSITION, TileLayerOptions } from '../../../../../../const';
 import MapComponent from '../map/map';
@@ -8,31 +8,31 @@ type AddressInputProps = {
   setInputAddressValue: (address: string) => void
 }
 
-const AddressInput = ({ inputAddressValue, setInputAddressValue }: AddressInputProps) => {
+function AddressInput({ inputAddressValue, setInputAddressValue }: AddressInputProps) {
   const [position, setPosition] = useState(POSITION);
   const [address, setAddress] = useState('');
 
   useEffect(() => {
     const provider = new MapBoxProvider({
       params: {
+        // eslint-disable-next-line camelcase
         access_token: TileLayerOptions.AccessToken,
       },
     });
-
-    provider.search({ query: address }).then(function (result) {
-      const { x: lng, y: lat } = result[0];
-      setPosition([lat, lng]);
-      setInputAddressValue(result[0].label);
-    }).catch(() => {
-      return;
-    });
+    if (address !== '') {
+      provider.search({ query: address }).then((result) => {
+        const { x: lng, y: lat } = result[0];
+        setPosition([lat, lng]);
+        setInputAddressValue(result[0].label);
+      });
+    }
   }, [address, setInputAddressValue]);
 
-  const handleAddressInputChange = ({ target }) => {
+  const handleAddressInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setInputAddressValue(target.value);
   };
 
-  const handleAddressInputBlur = ({ target }) => {
+  const handleAddressInputBlur = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setAddress(target.value);
   };
 
@@ -40,7 +40,9 @@ const AddressInput = ({ inputAddressValue, setInputAddressValue }: AddressInputP
     <div className="order-form__map-wrap">
       <div className='input__wrap'>
         <label className={(inputAddressValue === '') ? 'label' : 'label label--show'}
-          htmlFor="address">Адрес</label>
+          htmlFor="address"
+        >Адрес
+        </label>
         <input
           type="text"
           className="input address-input"
@@ -60,7 +62,7 @@ const AddressInput = ({ inputAddressValue, setInputAddressValue }: AddressInputP
         <span>Итог:</span><span>3790 руб.</span>
       </div>
     </div>
-  )
-};
+  );
+}
 
 export default AddressInput;

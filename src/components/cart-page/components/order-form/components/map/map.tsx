@@ -1,16 +1,16 @@
 import { Icon, LatLngTuple } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useRef } from 'react';
-import { MapContainer, TileLayer, Marker, MapConsumer } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, MapConsumer } from 'react-leaflet';
 import 'leaflet-geosearch/dist/geosearch.css';
 import { TileLayerOptions } from '../../../../../../const';
 
 type MapProps = {
   position: LatLngTuple,
-  address:  string,
+  address: string,
 }
 
-const Map = ({ position, address }: MapProps) => {
+function Map({ position, address }: MapProps) {
   const markerRef = useRef(null);
 
   const icon = (new Icon({
@@ -33,13 +33,14 @@ const Map = ({ position, address }: MapProps) => {
           return null;
         }}
       </MapConsumer>
-      {(address !== '') && <Marker
-        ref={markerRef}
-        position={position}
-        icon={icon}
-      />}
+      {(address !== '') &&
+        <Marker
+          ref={markerRef}
+          position={position}
+          icon={icon}
+        />}
     </MapContainer>
-  )
-};
+  );
+}
 
 export default Map;
