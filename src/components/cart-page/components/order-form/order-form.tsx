@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, FormEvent } from 'react';
+import { useState, ChangeEvent, FormEvent, MouseEvent } from 'react';
 import AddressInput from './components/address-input/address-input';
 import ProductCardsList from './components/product-cards-list/product-cards-list';
 
@@ -27,8 +27,8 @@ function OrderForm() {
     setInputTypeIsShow(!inputTypeIsShow);
   };
 
-  const handleInputTypeClick = ({ target }: any) => {
-    setInputTypeValue(target.textContent);
+  const handleItemTypeClick = ({ currentTarget }: MouseEvent<HTMLLIElement>) => {
+    setInputTypeValue(String(currentTarget.textContent));
     setInputTypeIsShow(false);
   };
 
@@ -153,12 +153,10 @@ function OrderForm() {
             onClick={handleInputTypeShowButtonClick}
           >
           </button>
-          <ul className={inputTypeIsShow ? 'input-type__content-list input-type__content-list--show' : 'input-type__content-list'}
-            onClick={handleInputTypeClick}
-          >
-            <li>Без упаковки</li>
-            <li>Стандартная</li>
-            <li>Подарочная</li>
+          <ul className={inputTypeIsShow ? 'input-type__content-list input-type__content-list--show' : 'input-type__content-list'}>
+            <li onClick={handleItemTypeClick}>Без упаковки</li>
+            <li onClick={handleItemTypeClick}>Стандартная</li>
+            <li onClick={handleItemTypeClick}>Подарочная</li>
           </ul>
         </div>
         <div className='input__wrap'>
