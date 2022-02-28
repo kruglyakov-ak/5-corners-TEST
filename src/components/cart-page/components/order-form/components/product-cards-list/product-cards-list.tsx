@@ -4,7 +4,6 @@ import ProductCard from './components/product-card/product-card';
 
 function ProductCardsList() {
   const productsInCart = useSelector(getProductsInCart);
-
   return (
 
     <>

@@ -11,6 +11,7 @@ type AddressInputProps = {
 function AddressInput({ inputAddressValue, setInputAddressValue }: AddressInputProps) {
   const [position, setPosition] = useState(POSITION);
   const [address, setAddress] = useState('');
+  const [totalPrice] = useState(0);
 
   useEffect(() => {
     const provider = new MapBoxProvider({
@@ -59,7 +60,7 @@ function AddressInput({ inputAddressValue, setInputAddressValue }: AddressInputP
       <MapComponent position={position} address={address} />
 
       <div className="total-price">
-        <span>Итог:</span><span>3790 руб.</span>
+        <span>Итог:</span><span>{totalPrice} руб.</span>
       </div>
     </div>
   );

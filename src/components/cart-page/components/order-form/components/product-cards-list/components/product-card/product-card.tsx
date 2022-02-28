@@ -1,4 +1,6 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { changeProductAmount, deleteProduct } from '../../../../../../../../store/action';
 import { ProductInCart } from '../../../../../../../../type/product-in-cart';
 
 type ProductCardProps = {
@@ -11,10 +13,15 @@ function ProductCard({ product }: ProductCardProps) {
     name,
     price,
     type,
-    amount
+    amount,
+    id
   } = product;
-
+  const dispatch = useDispatch();
   const [productCount, setProductCount] = useState(amount);
+
+  useEffect(() => {
+    changeProductAmount(productCount, id);
+  }, [id, productCount]);
 
   const handleInputCountChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setProductCount(Number(target.value));
@@ -42,7 +49,7 @@ function ProductCard({ product }: ProductCardProps) {
     }
   };
 
-  const isValidPrice = () => {
+  const validatePrice = () => {
     if (productCount === 0) {
       return price;
     }
@@ -54,6 +61,14 @@ function ProductCard({ product }: ProductCardProps) {
     return price * productCount;
   };
 
+  const deleteButtonClick = () => {
+    // eslint-disable-next-line no-alert
+    if (!window.confirm('Удалить товар?')) {
+      return;
+    }
+    dispatch(deleteProduct(id));
+  };
+
   return (
     <article className="product-card">
       <img className="product-card__img" src={img} alt="Товар" width="150" height="150" />
@@ -61,7 +76,7 @@ function ProductCard({ product }: ProductCardProps) {
         <div className="product-card-title__wrap">
           <p className="product-card-title">{name}</p>
           <p className="product-card-price">
-            {isValidPrice()} руб.
+            {validatePrice()} руб.
           </p>
         </div>
         <p className="product-card-description">{type} </p>
@@ -79,7 +94,7 @@ function ProductCard({ product }: ProductCardProps) {
 
             <button className="counter-button counter-button__plus" type='button' onClick={handleIncButtonClick}></button>
           </div>
-          <button className="product-card-delete" type='button'>Удалить</button>
+          <button className="product-card-delete" type='button' onClick={deleteButtonClick}>Удалить</button>
         </div>
       </div>
     </article>
