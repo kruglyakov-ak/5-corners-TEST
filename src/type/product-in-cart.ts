@@ -2,7 +2,7 @@ type ProductInCart = {
   id: string,
   name: string,
   type: string,
-  imgURL: string,
+  img: string,
   price: number,
   amount: number,
 }
