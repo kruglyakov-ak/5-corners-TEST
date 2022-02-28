@@ -19,18 +19,18 @@ function ProductCard({ product }: ProductCardProps) {
       <div className="product-card__content">
         <div className="product-card-title__wrap">
           <p className="product-card-title">{name}</p>
-          <p className="product-card-price">{price*amount} руб.</p>
+          <p className="product-card-price">{price * amount} руб.</p>
         </div>
         <p className="product-card-description">{type} </p>
         <div className="product-card-counter__wrap">
           <div className="product-card-counter">
-            <button className="counter-button counter-button__minus"></button>
+            <button className="counter-button counter-button__minus" type='button'></button>
 
             <input className="counter-input" type="number" defaultValue={amount} />
 
-            <button className="counter-button counter-button__plus"></button>
+            <button className="counter-button counter-button__plus" type='button'></button>
           </div>
-          <button className="product-card-delete">Удалить</button>
+          <button className="product-card-delete" type='button'>Удалить</button>
         </div>
       </div>
     </article>
