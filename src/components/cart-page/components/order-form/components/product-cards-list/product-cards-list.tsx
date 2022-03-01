@@ -9,6 +9,7 @@ function ProductCardsList() {
     <>
       <h2 className="subtitle">Выбранные товары:</h2>
       <div className="product-cards-wrap">
+        {productsInCart.length === 0 ? <p>Добаьте товары в корзину</p> : ''}
         {productsInCart.map((product) => <ProductCard key={product.id} product={product} />)}
       </div>
       <button type="submit" className="button">Купить</button>

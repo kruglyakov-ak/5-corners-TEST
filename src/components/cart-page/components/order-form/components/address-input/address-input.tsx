@@ -1,25 +1,19 @@
 import { useEffect, useState, ChangeEvent } from 'react';
 import { MapBoxProvider } from 'leaflet-geosearch';
-import { POSITION, TileLayerOptions } from '../../../../../../const';
+import { TileLayerOptions } from '../../../../../../const';
 import MapComponent from '../map/map';
-import { useSelector } from 'react-redux';
-import { getPrices } from '../../../../../../store/cart-data/selectors';
+import { LatLngTuple } from 'leaflet';
 
 type AddressInputProps = {
+  position: LatLngTuple,
+  setPosition: (position: LatLngTuple) => void,
   inputAddressValue: string,
-  setInputAddressValue: (address: string) => void
+  setInputAddressValue: (address: string) => void,
+  totalPrice: number
 }
 
-function AddressInput({ inputAddressValue, setInputAddressValue }: AddressInputProps) {
-  const prices = useSelector(getPrices);
-  const [position, setPosition] = useState(POSITION);
+function AddressInput({ inputAddressValue, setInputAddressValue, totalPrice, position, setPosition }: AddressInputProps) {
   const [address, setAddress] = useState('');
-  const [totalPrice, setTotalPrice] = useState(0);
-
-  useEffect(() => {
-    const price = prices.reduce((prev, curr) => prev + curr.amount * curr.price, 0);
-    setTotalPrice(price);
-  }, [prices]);
 
   useEffect(() => {
     const provider = new MapBoxProvider({
@@ -35,7 +29,7 @@ function AddressInput({ inputAddressValue, setInputAddressValue }: AddressInputP
         setInputAddressValue(result[0].label);
       });
     }
-  }, [address, setInputAddressValue]);
+  }, [address, setInputAddressValue, setPosition]);
 
   const handleAddressInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setInputAddressValue(target.value);
