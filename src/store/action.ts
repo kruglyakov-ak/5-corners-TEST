@@ -30,8 +30,18 @@ const deleteProduct = createAction(
   }),
 );
 
+const changeTotalPrice = createAction(
+  ActionType.ChangeTotalPrice,
+  (price) => ({
+    payload: {
+      price
+    },
+  }),
+);
+
 export {
   loadProductsInCart,
   changeProductAmount,
-  deleteProduct
+  deleteProduct,
+  changeTotalPrice
 };

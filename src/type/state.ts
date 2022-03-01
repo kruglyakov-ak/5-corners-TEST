@@ -5,6 +5,7 @@ type State = RootState;
 
 type CartData = {
   productsInCart: ProductInCart[],
+  totalPrice: number,
 };
 
 export type {

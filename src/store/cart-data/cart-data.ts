@@ -1,9 +1,10 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { CartData } from '../../type/state';
-import { changeProductAmount, deleteProduct, loadProductsInCart } from '../action';
+import { changeProductAmount, changeTotalPrice, deleteProduct, loadProductsInCart } from '../action';
 
 const initialState: CartData = {
   productsInCart: [],
+  totalPrice: 0,
 };
 
 const cartData = createReducer(initialState, (builder) => {
@@ -24,6 +25,10 @@ const cartData = createReducer(initialState, (builder) => {
       const { id } = action.payload;
       const i = state.productsInCart.findIndex((product) => product.id === id);
       state.productsInCart.splice(i, 1);
+    })
+    .addCase(changeTotalPrice, (state, action) => {
+      const { price } = action.payload;
+      state.totalPrice = price;
     });
 });
 

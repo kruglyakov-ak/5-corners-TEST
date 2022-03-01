@@ -2,6 +2,8 @@ import { useEffect, useState, ChangeEvent } from 'react';
 import { MapBoxProvider } from 'leaflet-geosearch';
 import { POSITION, TileLayerOptions } from '../../../../../../const';
 import MapComponent from '../map/map';
+import { useSelector } from 'react-redux';
+import { getPrices } from '../../../../../../store/cart-data/selectors';
 
 type AddressInputProps = {
   inputAddressValue: string,
@@ -9,9 +11,15 @@ type AddressInputProps = {
 }
 
 function AddressInput({ inputAddressValue, setInputAddressValue }: AddressInputProps) {
+  const prices = useSelector(getPrices);
   const [position, setPosition] = useState(POSITION);
   const [address, setAddress] = useState('');
-  const [totalPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  useEffect(() => {
+    const price = prices.reduce((prev, curr) => prev + curr.amount * curr.price, 0);
+    setTotalPrice(price);
+  }, [prices]);
 
   useEffect(() => {
     const provider = new MapBoxProvider({

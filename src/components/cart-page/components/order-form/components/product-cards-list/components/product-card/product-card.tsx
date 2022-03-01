@@ -20,8 +20,8 @@ function ProductCard({ product }: ProductCardProps) {
   const [productCount, setProductCount] = useState(amount);
 
   useEffect(() => {
-    changeProductAmount(productCount, id);
-  }, [id, productCount]);
+    dispatch(changeProductAmount(productCount, id));
+  }, [dispatch, id, productCount]);
 
   const handleInputCountChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setProductCount(Number(target.value));
